@@ -1,0 +1,50 @@
+name: Häerzer sichern
+
+# Liest jede Nacht die Herz-Zähler (abacus.jasoncameron.dev) und speichert sie
+# in herzer.json. Die Webseite zeigt immer den größeren Wert – so geht nichts
+# verloren, falls der Zähldienst einmal ausfällt oder einen Zähler vergisst.
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sichern:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zähler lesen
+        run: |
+          python3 - <<'EOF'
+          import json, urllib.request
+          from pathlib import Path
+          alt = json.loads(Path("herzer.json").read_text()) if Path("herzer.json").exists() else {}
+          neu = {}
+          for f in sorted(Path("rezepte").glob("*.json")):
+              n = 0
+              try:
+                  with urllib.request.urlopen(f"https://abacus.jasoncameron.dev/get/pugu-rezeptbuch/{f.stem}", timeout=15) as r:
+                      n = json.load(r).get("value", 0)
+              except Exception:
+                  pass
+              neu[f.stem] = max(n, alt.get(f.stem, 0))
+          Path("herzer.json").write_text(json.dumps(neu, indent=1) + "\n")
+          print(neu)
+          EOF
+      - name: Speichern und veröffentlichen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$(git status --porcelain herzer.json)" ]; then
+            git config user.name "rezeptbuch-bot"
+            git config user.email "rezeptbuch-bot@users.noreply.github.com"
+            git add herzer.json
+            git commit -m "Häerzer gesichert"
+            git push
+            gh workflow run pages.yml --ref main
+          fi

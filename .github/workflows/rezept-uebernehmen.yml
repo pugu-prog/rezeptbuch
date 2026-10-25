@@ -1,7 +1,7 @@
 name: Rezept automatisch übernehmen
 
 # Claude-Cloud-Sitzungen pushen auf einen eigenen Branch (z. B. claude/...).
-# Ändert ein Branch nur Dateien in rezepte/, wird er geprüft und nach main
+# Ändert ein Branch nur Dateien in rezepte/ und bilder/, wird er geprüft und nach main
 # übernommen; danach wird die Seite neu veröffentlicht. Alles andere bleibt
 # liegen, bis Guy es sich anschaut.
 
@@ -30,7 +30,7 @@ jobs:
           git fetch origin main
           geaendert=$(git diff --name-only origin/main...HEAD)
           echo "$geaendert"
-          if [ -n "$geaendert" ] && ! echo "$geaendert" | grep -v -E '^rezepte/[a-z0-9-]+\.json$'; then
+          if [ -n "$geaendert" ] && ! echo "$geaendert" | grep -v -E '^(rezepte/[a-z0-9-]+\.json|bilder/[a-z0-9-]+\.(jpg|jpeg|png|webp))$'; then
             echo "ok=true" >> "$GITHUB_OUTPUT"
           else
             echo "::notice::Branch ändert mehr als Rezepte – wird nicht automatisch übernommen."

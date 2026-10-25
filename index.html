@@ -106,7 +106,7 @@ footer{color:var(--muted);font-size:.85rem;padding:20px 0 40px;border-top:1px so
   <footer>Nei Rezepter kommen iwwer Claude dobäi – <a href="#/matmaachen">sou geet et</a>.</footer>
 </div>
 <script>
-const EMOJI = {"Fréistéck":"🥐","Virspeis":"🥗","Zopp":"🍲","Zalot":"🥬","Haaptplat":"🍽️","Bäilag":"🥔","Dessert":"🍮","Kuch & Gebäck":"🍰","Snack":"🥨","Gedrénks":"🥤","Anescht":"📒"};
+let EMOJI = {};  // Kategorien + Emoji aus kategorien.json
 const NIVEAU = {"einfach":"einfach","mëttel":"mëttel","schwéier":"schwéier"};
 const app = document.getElementById("app");
 let rezepte = [], filter = {q:"", kat:"", autor:""};
@@ -118,6 +118,7 @@ async function laden(){
     const r = await fetch("rezepte.json", {cache:"no-store"});
     if(!r.ok) throw 0;
     rezepte = await r.json();
+    try { const k = await fetch("kategorien.json", {cache:"no-store"}); if(k.ok) EMOJI = await k.json(); } catch {}
   }catch{
     app.innerHTML = '<p class="empty">D’Rezepter konnten net geluede ginn.</p>'; return;
   }
@@ -216,7 +217,7 @@ function karten(){
     (!q || [r.titel, r.beschreibung, ...(r.tags||[]), ...flach(r.zutaten||[])].join(" ").toLowerCase().includes(q)));
   document.getElementById("grid").innerHTML = treffer.length ? treffer.map(r => `
     <a class="card" href="#/rezept/${encodeURIComponent(r.slug)}">
-      ${r.bild ? `<img src="${esc(r.bild)}" alt="" loading="lazy">` : `<div class="ph">${EMOJI[r.kategorie]||"📒"}</div>`}
+      ${r.bild ? `<img src="${esc(r.bild)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;ph&quot;>${EMOJI[r.kategorie]||"📒"}</div>'">` : `<div class="ph">${EMOJI[r.kategorie]||"📒"}</div>`}
       ${herzHtml(r.slug)}
       <div class="body">
         <h3>${esc(r.titel)}</h3>
@@ -249,7 +250,7 @@ function detail(slug){
   app.innerHTML = `
     <a class="back" href="#/">← All Rezepter</a>
     <article class="detail">
-      ${r.bild ? `<a class="hero" href="${esc(r.bild)}" target="_blank" rel="noopener" title="Bild grouss opmaachen"><img src="${esc(r.bild)}" alt="${esc(r.titel)}"></a>${r.bild_quelle ? `<p class="credit">${linkify(r.bild_quelle)}</p>` : `<div style="height:14px"></div>`}` : ""}
+      ${r.bild ? `<a class="hero" href="${esc(r.bild)}" target="_blank" rel="noopener" title="Bild grouss opmaachen"><img src="${esc(r.bild)}" alt="${esc(r.titel)}" onerror="this.closest('.hero').nextElementSibling?.remove();this.closest('.hero').remove()"></a>${r.bild_quelle ? `<p class="credit">${linkify(r.bild_quelle)}</p>` : `<div style="height:14px"></div>`}` : ""}
       <h2>${esc(r.titel)}</h2>
       <div class="meta" style="margin-top:8px">vum <span class="who ${esc(r.autor)}">${esc(r.autor)}</span>${r.hinzugefuegt?` · ${new Date(r.hinzugefuegt).toLocaleDateString("de-LU")}`:""}</div>
       ${r.beschreibung ? `<p class="desc">${esc(r.beschreibung)}</p>` : ""}
@@ -264,7 +265,8 @@ function detail(slug){
       ${(r.tags||[]).length ? `<div class="tags">${r.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</div>` : ""}
       <section class="notizen"><h3>Notizen &amp; Iddien</h3>
         ${(r.notizen||[]).map(n => `<div class="notiz"><div class="meta"><span class="who ${esc(n.autor)}">${esc(n.autor)}</span>${n.datum?`<span>${new Date(n.datum).toLocaleDateString("de-LU")}</span>`:""}</div>${esc(n.text)}</div>`).join("") || `<p class="notiz-neu">Nach keng Notizen.</p>`}
-        <p class="notiz-neu">Eng Iddi, wéi et nach besser gëtt? <a href="${notizLink(r)}" target="_blank" rel="noopener">Notiz iwwer Claude derbäisetzen ↗</a></p>
+        <p class="notiz-neu">Eng Iddi, wéi et nach besser gëtt? <a href="${notizLink(r)}" target="_blank" rel="noopener">Notiz iwwer Claude derbäisetzen ↗</a><br>
+        E Feeler am Lëtzebuergeschen fonnt? <a href="${korrekturLink(r)}" target="_blank" rel="noopener">Sproochlech Korrektur iwwer Claude ↗</a></p>
       </section>
       <div class="actions"><button class="btn" onclick="print()">Drécken</button></div>
     </article>`;
@@ -275,6 +277,8 @@ function detail(slug){
   });
 }
 
+const KORREKTUR_SAIT = "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") +
+  "&prompt=" + encodeURIComponent("Sproochlech Korrektur un der Websäit (index.html) – Reegelen an der CLAUDE.md. Ech sinn de ");
 const CLAUDE_LINK = "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") +
   "&prompt=" + encodeURIComponent("Setz dëst Rezept an eist Famill-Rezeptbuch (Reegelen an der CLAUDE.md). Ech sinn de ");
 
@@ -289,6 +293,11 @@ function tippsHtml(t){
 function notizLink(r){
   return "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") + "&prompt=" +
     encodeURIComponent(`Ech hunn eng Notiz zum Rezept „${r.titel}“ (rezepte/${r.slug}.json) – Reegelen an der CLAUDE.md. Ech sinn de `);
+}
+
+function korrekturLink(r){
+  return "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") + "&prompt=" +
+    encodeURIComponent(`Sproochlech Korrektur am Rezept „${r.titel}“ (rezepte/${r.slug}.json) – Reegelen an der CLAUDE.md. Ech sinn de `);
 }
 
 function matmaachen(){
@@ -334,6 +343,12 @@ function matmaachen(){
         <li>No 1–2 Minutten ass et hei op der Säit.</li>
       </ul>
       <p>Ouni Knäppchen: an claude.ai/code ënnen de Repo <code>pugu-prog/rezeptbuch</code> auswielen an et einfach soen.</p></div>
+
+    <div class="faq">
+      <h3>Notizen a Korrekturen</h3>
+      <p><b>Iddi fir e Rezept vun engem aneren?</b> Ënnen am Rezept op „Notiz iwwer Claude derbäisetzen“ klicken – d'Notiz steet duerno mat dengem Numm ënnert dem Rezept.</p>
+      <p><b>Feeler am Lëtzebuergeschen?</b> Am Rezept op „Sproochlech Korrektur iwwer Claude“ klicken, oder fir d'Säit selwer: <a href="${KORREKTUR_SAIT}" target="_blank" rel="noopener">Korrektur un der Websäit ↗</a>. Claude weist der éischt „al → nei“, da sees du ok.</p>
+    </div>
 
     <div class="faq">
       <h3>Wann eppes net geet</h3>

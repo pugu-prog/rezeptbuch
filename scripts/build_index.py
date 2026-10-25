@@ -5,8 +5,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KATEGORIEN = {"Fréistéck", "Virspeis", "Zopp", "Zalot", "Haaptplat", "Bäilag",
-              "Dessert", "Kuch & Gebäck", "Snack", "Gedrénks", "Anescht"}
+KATEGORIEN = json.loads((ROOT / "kategorien.json").read_text(encoding="utf-8"))
 NIVEAUEN = {"einfach", "mëttel", "schwéier"}
 PFLICHT = ("titel", "autor", "kategorie", "zutaten", "schritte")
 
@@ -48,6 +47,8 @@ def main():
     rezepte.sort(key=lambda r: r.get("hinzugefuegt", ""), reverse=True)
     out.mkdir(parents=True, exist_ok=True)
     (out / "rezepte.json").write_text(json.dumps(rezepte, ensure_ascii=False, indent=1), encoding="utf-8")
+    if out != ROOT:
+        (out / "kategorien.json").write_text(json.dumps(KATEGORIEN, ensure_ascii=False), encoding="utf-8")
     print(f"{len(rezepte)} Rezepte -> {out / 'rezepte.json'}")
 
 

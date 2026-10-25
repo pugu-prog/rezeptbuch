@@ -62,8 +62,8 @@ Wer ist der Autor? Den Nutzer fragen, falls nicht klar: `Guy`, `Louis` oder `Jac
 
 Pflichtfelder: `titel`, `autor`, `kategorie`, `zutaten`, `schritte`.
 
-- `kategorie` – genau eins von: `Fréistéck`, `Virspeis`, `Zopp`, `Zalot`,
-  `Haaptplat`, `Bäilag`, `Dessert`, `Kuch & Gebäck`, `Snack`, `Gedrénks`, `Anescht`.
+- `kategorie` – genau einer der Namen aus `kategorien.json` (z. B. `Kaffi drénken`,
+  `Haaptplat`, `Kuch & Gebäck`, `Gedrénks` …).
 - `schwierigkeit` – `einfach`, `mëttel` oder `schwéier`.
 - `zutaten` – Strings mit Menge vorne („200 g Miel“). Für Abschnitte
   (Deeg / Fëllung …) ein Objekt `{ "gruppe": "…", "liste": [ … ] }`.
@@ -77,6 +77,8 @@ lange Seite höchstens 1600 px, JPEG) und im Rezept `"bild": "bilder/<slug>.jpg"
 eintragen. Bild und Rezept im selben Commit. Ohne Foto das Feld weglassen.
 Ein abfotografiertes Rezeptblatt/Zettel zusätzlich als
 `bilder/<slug>-rezeptblat.jpg` speichern und `"rezeptblat"` setzen.
+**Keine Bilder von fremden Webseiten verlinken** (z. B. Chefkoch blockiert das,
+und die Rechte fehlen) – Bilder immer als Datei in `bilder/` speichern.
 Fremde Fotos nur mit freier Lizenz (z. B. Wikimedia Commons CC0/CC BY) und
 mit `"bild_quelle": "Foto: <Autor>, <Lizenz> – <URL>"`.
 
@@ -99,6 +101,24 @@ Louis und Jacques (und Guy) sollen an allen Rezepten mitarbeiten können:
   Louis“), damit der ursprüngliche Autor es nachvollziehen kann.
   Commit-Nachricht: `Rezept verbessert: <Titel> (<Autor>)`.
 - `autor` des Rezepts bleibt immer der ursprüngliche Autor.
+
+## Sprachliche Korrekturen (Lëtzebuergesch)
+
+Guy, Louis und Jacques dürfen **überall** sprachliche Korrekturen machen –
+Rechtschreibung, Grammatik, besseres luxemburgisches Wort:
+
+- **in Rezepten** (`rezepte/*.json`): auch in Rezepten der anderen, ohne
+  nachzufragen. Nur die Sprache ändern, nicht Mengen/Inhalt. Keine Notiz nötig.
+- **auf der Webseite** (`index.html`): nur sichtbare Texte ersetzen (Überschriften,
+  Knöpfe, Anleitung „Matmaachen“) – kein Code, kein HTML-Umbau, kein Design.
+  Achtung bei Apostrophen in JavaScript-Strings mit `'…'`: dort `’` verwenden.
+- **Kategorien** (`kategorien.json`): Namen korrigieren; dann in allen Rezepten
+  mit dieser Kategorie den Namen im selben Commit mitändern.
+- Zuerst dem Nutzer eine kurze Liste „alt → neu“ zeigen und bestätigen lassen.
+- Commit-Nachricht: `Korrektur: <was> (<Autor>)`.
+
+Die Automatik übernimmt solche Branches nach einem Test (Seite lädt, alle
+Rezepte erscheinen) selbst nach `main`.
 
 ## Rezept ändern oder löschen
 

@@ -4,7 +4,13 @@
   "kategorie": "Kuch & Gebäck",
   "zeit_minuten": 55,
   "schwierigkeit": "einfach",
-  "tags": ["glutenfräi", "ouni Zocker", "Brownie", "Schockela", "Bounen"],
+  "tags": [
+    "glutenfräi",
+    "ouni Zocker",
+    "Brownie",
+    "Schockela",
+    "Bounen"
+  ],
   "beschreibung": "Gesond, glutenfräi a ouni raffinéierten Zocker: säfteg Brownies aus schwaarze Bounen a Dattelen. Hei stinn d'Original (Chefkoch) an dem Louis seng Variant mat Hunneg a Proteinpulver beieneen.",
   "zutaten": [
     {
@@ -51,6 +57,7 @@
     "** Entweder Medjool-Dattelen huelen, oder normal Dattelen, déi virdru ongeféier 20 Minutten a lauwarmem Waasser amweechen.",
     "D'Variant mécht doubel sou vill Deeg wéi d'Original – d'Form an d'Backzäit dofir upassen."
   ],
+  "bild": "https://img.chefkoch-cdn.de/rezepte/3055881458202629/bilder/888995/crop-640x427/gesunde-brownies-glutenfrei-zuckerfrei.jpg",
   "quelle": "https://www.chefkoch.de/rezepte/3055881458202629/Gesunde-Brownies-glutenfrei-zuckerfrei.html",
   "hinzugefuegt": "2026-10-25"
 }

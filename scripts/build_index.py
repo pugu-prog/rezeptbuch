@@ -17,6 +17,10 @@ def pruefen(pfad, r):
         fehler.append(f"unbekannte Kategorie: {r['kategorie']}")
     if not isinstance(r.get("zutaten", []), list) or not isinstance(r.get("schritte", []), list):
         fehler.append("zutaten und schritte müssen Listen sein")
+    for n in r.get("notizen", []):
+        if not isinstance(n, dict) or not n.get("autor") or not n.get("text"):
+            fehler.append("jede Notiz braucht autor und text")
+            break
     if r.get("schwierigkeit") and r["schwierigkeit"] not in NIVEAUEN:
         fehler.append(f"onbekannt Schwieregkeet: {r['schwierigkeit']}")
     return [f"{pfad.name}: {f}" for f in fehler]

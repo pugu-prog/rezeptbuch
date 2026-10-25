@@ -74,6 +74,11 @@ ol.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:3
 .step code{background:var(--accent-soft);padding:1px 6px;border-radius:5px;font-size:.92em}
 .step.wer{border-style:dashed}
 .big{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
+.note ul{margin:6px 0 0;padding-left:20px}.note li{margin:4px 0}
+.notizen{margin-top:26px}.notizen h3{font-size:1.25rem;margin-bottom:10px}
+.notiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:8px}
+.notiz .meta{margin-bottom:4px}
+.notiz-neu{color:var(--muted);font-size:.92rem;margin-top:8px}
 .faq{margin-top:26px}.faq h3{font-size:1.2rem;margin-bottom:8px}.faq p{margin:6px 0 12px}
 footer{color:var(--muted);font-size:.85rem;padding:20px 0 40px;border-top:1px solid var(--line)}
 @media print{
@@ -191,9 +196,13 @@ function detail(slug){
         <div class="box"><h3>Zutaten</h3>${zutatenHtml(r.zutaten||[])}</div>
         <div class="box"><h3>Preparatioun</h3><ol class="steps">${(r.schritte||[]).map(s=>`<li>${esc(s)}</li>`).join("")}</ol></div>
       </div>
-      ${r.tipps ? `<div class="note"><strong>Tipp:</strong> ${esc(r.tipps)}</div>` : ""}
+      ${tippsHtml(r.tipps)}
       ${r.quelle ? `<p class="meta" style="margin-top:14px">Quell: ${/^https?:/.test(r.quelle) ? `<a href="${esc(r.quelle)}" target="_blank" rel="noopener">${esc(r.quelle)}</a>` : esc(r.quelle)}</p>` : ""}
       ${(r.tags||[]).length ? `<div class="tags">${r.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</div>` : ""}
+      <section class="notizen"><h3>Notizen &amp; Iddien</h3>
+        ${(r.notizen||[]).map(n => `<div class="notiz"><div class="meta"><span class="who ${esc(n.autor)}">${esc(n.autor)}</span>${n.datum?`<span>${new Date(n.datum).toLocaleDateString("de-LU")}</span>`:""}</div>${esc(n.text)}</div>`).join("") || `<p class="notiz-neu">Nach keng Notizen.</p>`}
+        <p class="notiz-neu">Eng Iddi, wéi et nach besser gëtt? <a href="${notizLink(r)}" target="_blank" rel="noopener">Notiz iwwer Claude derbäisetzen ↗</a></p>
+      </section>
       <div class="actions"><button class="btn" onclick="print()">Drécken</button></div>
     </article>`;
   app.querySelectorAll(".ing li").forEach(li => li.onclick = e => {
@@ -204,6 +213,17 @@ function detail(slug){
 
 const CLAUDE_LINK = "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") +
   "&prompt=" + encodeURIComponent("Setz dëst Rezept an eist Famill-Rezeptbuch (Reegelen an der CLAUDE.md). Ech sinn de ");
+
+function tippsHtml(t){
+  if(!t || (Array.isArray(t) && !t.length)) return "";
+  if(!Array.isArray(t)) return `<div class="note"><strong>Tipp:</strong> ${esc(t)}</div>`;
+  return `<div class="note"><strong>Tipps</strong><ul>${t.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`;
+}
+
+function notizLink(r){
+  return "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") + "&prompt=" +
+    encodeURIComponent(`Ech hunn eng Notiz zum Rezept „${r.titel}“ (rezepte/${r.slug}.json) – Reegelen an der CLAUDE.md. Ech sinn de `);
+}
 
 function matmaachen(){
   document.title = "Matmaachen – Eist Rezeptbuch";

@@ -52,7 +52,8 @@ Wer ist der Autor? Den Nutzer fragen, falls nicht klar: `Guy`, `Louis` oder `Jac
     "Gromperen schielen a fein raffen.",
     "…"
   ],
-  "tipps": "Optional: Tipps, Varianten.",
+  "tipps": ["Optional: ein Tipp pro Eintrag", "Varianten …"],
+  "notizen": [{ "autor": "Louis", "datum": "2026-10-26", "text": "Mit Chili noch besser." }],
   "quelle": "Optional: Bomi / Buch / URL",
   "bild": "Optional: URL zu engem Foto",
   "hinzugefuegt": "2026-10-25"
@@ -74,11 +75,27 @@ Wenn der Nutzer ein Foto, einen Screenshot, ein PDF oder eine Webseite
 schickt: Rezept daraus abtippen, in dieses Format bringen, kurz zeigen und
 dann committen. Bei Webrezepten die URL als `quelle` eintragen.
 
+## Notizen & Verbesserungen zu Rezepten der anderen
+
+Louis und Jacques (und Guy) sollen an allen Rezepten mitarbeiten können:
+
+- **Notiz / Idee / Anmerkung** („mit Chili probiert, super“, „weniger Zucker reicht“):
+  in der Rezeptdatei an die Liste `notizen` anhängen –
+  `{ "autor": "<Name>", "datum": "<JJJJ-MM-TT>", "text": "<Notiz auf Lëtzebuergesch>" }`.
+  Bestehende Notizen nie löschen oder umschreiben.
+  Commit-Nachricht: `Notiz: <Titel> (<Autor>)`.
+- **Verbesserung direkt im Rezept** (Menge, Schritt, Tipp ändern): nur wenn der
+  Nutzer das ausdrücklich will. Dann die Änderung machen **und** zusätzlich eine
+  Notiz anhängen, was geändert wurde und warum (z. B. „Zucker vun 200 op 150 g –
+  Louis“), damit der ursprüngliche Autor es nachvollziehen kann.
+  Commit-Nachricht: `Rezept verbessert: <Titel> (<Autor>)`.
+- `autor` des Rezepts bleibt immer der ursprüngliche Autor.
+
 ## Rezept ändern oder löschen
 
 Bestehende Datei in `rezepte/` bearbeiten bzw. löschen. Commit-Nachricht:
 `Rezept geändert: <Titel>` / `Rezept gelöscht: <Titel>`.
-Rezepte anderer Familienmitglieder nur ändern, wenn der Nutzer es ausdrücklich will.
+Rezepte anderer Familienmitglieder löschen nur, wenn der ursprüngliche Autor einverstanden ist.
 
 ## Technik (nur zur Info)
 

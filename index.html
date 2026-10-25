@@ -8,19 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
+  color-scheme:light;
   --bg:#faf6ef; --card:#fffdf9; --ink:#2b2420; --muted:#7a6d63; --line:#e8dfd2;
   --accent:#c0532b; --accent-soft:#f6e3d8;
   --guy:#3b6e8f; --louis:#5b8a3a; --jacques:#a2507a;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#1c1917; --card:#26211e; --ink:#f2ebe3; --muted:#a8998c; --line:#3a332e;
-  --accent:#e2774d; --accent-soft:#3d2a20;
-  --guy:#7fb0d1; --louis:#9cc77a; --jacques:#d690b6;
-}}
-:root[data-theme="dark"]{
-  --bg:#1c1917; --card:#26211e; --ink:#f2ebe3; --muted:#a8998c; --line:#3a332e;
-  --accent:#e2774d; --accent-soft:#3d2a20;
-  --guy:#7fb0d1; --louis:#9cc77a; --jacques:#d690b6;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}

@@ -1,13 +1,13 @@
 # Unser Rezeptbuch
 
-Gemeinsames Familien-Rezeptbuch von Guy, Louis & Jack.
+Gemeinsames Familien-Rezeptbuch von Guy, Louis & Jacques.
 
 **Webseite:** https://pugu-prog.github.io/rezeptbuch/
 
 Rezepte liegen als JSON-Dateien in [`rezepte/`](rezepte/). Neue Rezepte kommen
 über Claude dazu – das Format und die Regeln stehen in [`CLAUDE.md`](CLAUDE.md).
 
-## Mitmachen (Louis & Jack)
+## Mitmachen (Louis & Jacques)
 
 1. GitHub-Einladung zum Repository `pugu-prog/rezeptbuch` annehmen.
 2. In Claude GitHub verbinden:

@@ -1,6 +1,6 @@
 # Familien-Rezeptbuch – Anleitung für Claude
 
-Dieses Repository ist das gemeinsame Rezeptbuch von **Guy, Louis und Jack**.
+Dieses Repository ist das gemeinsame Rezeptbuch von **Guy, Louis und Jacques**.
 Alle drei fügen Rezepte über ihren eigenen Claude-Zugang hinzu. Die Webseite
 (GitHub Pages) baut sich nach jedem Push automatisch neu:
 https://pugu-prog.github.io/rezeptbuch/
@@ -19,7 +19,7 @@ https://pugu-prog.github.io/rezeptbuch/
    `https://pugu-prog.github.io/rezeptbuch/#/rezept/<slug>`
    (ist nach ca. 1 Minute online).
 
-Wer ist der Autor? Den Nutzer fragen, falls nicht klar: `Guy`, `Louis` oder `Jack`.
+Wer ist der Autor? Den Nutzer fragen, falls nicht klar: `Guy`, `Louis` oder `Jacques`.
 
 ## Format (JSON, UTF-8)
 

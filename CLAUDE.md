@@ -1,4 +1,8 @@
-# Familien-Rezeptbuch – Anleitung für Claude
+# Famill-Rezeptbuch – Anleitung für Claude
+
+**Sprache der Rezepte und der Webseite: Lëtzebuergesch.** Rezepte, die in einer
+anderen Sprache kommen (Deutsch, Französisch, Foto, Link …), auf Luxemburgisch
+übertragen. Die JSON-Feldnamen bleiben wie unten (deutsch).
 
 Dieses Repository ist das gemeinsame Rezeptbuch von **Guy, Louis und Jacques**.
 Alle drei fügen Rezepte über ihren eigenen Claude-Zugang hinzu. Die Webseite
@@ -9,13 +13,16 @@ https://pugu-prog.github.io/rezeptbuch/
 
 1. **Eine Datei pro Rezept** in `rezepte/`, Dateiname = Slug des Titels:
    klein, ohne Umlaute/Sonderzeichen, Bindestriche statt Leerzeichen.
-   Beispiel: „Omas Käsekuchen“ → `rezepte/omas-kaesekuchen.json`.
+   Beispiel: „Bomi hire Kéiskuch“ → `rezepte/bomi-hire-keiskuch.json`.
    Vorher prüfen, ob es die Datei schon gibt – dann nicht überschreiben,
    sondern nachfragen (oder `-2` anhängen).
 2. **Nur diese eine neue Datei** anlegen/ändern. Keine andere Datei anfassen
    (kein Index, keine Webseite) – der Index entsteht automatisch.
-3. Direkt auf `main` committen. Commit-Nachricht: `Rezept: <Titel> (<Autor>)`.
-4. Danach dem Nutzer den Link geben:
+3. **Vorher checken:** das fertige Rezept dem Nutzer kurz zeigen und bestätigen
+   lassen. Wenn lokal möglich, `python3 scripts/build_index.py` laufen lassen
+   (prüft Format, Kategorie, Schwierigkeit).
+4. Direkt auf `main` committen. Commit-Nachricht: `Rezept: <Titel> (<Autor>)`.
+5. Danach dem Nutzer den Link geben:
    `https://pugu-prog.github.io/rezeptbuch/#/rezept/<slug>`
    (ist nach ca. 1 Minute online).
 
@@ -27,35 +34,35 @@ Wer ist der Autor? Den Nutzer fragen, falls nicht klar: `Guy`, `Louis` oder `Jac
 {
   "titel": "Gromperekichelcher",
   "autor": "Guy",
-  "kategorie": "Hauptgericht",
+  "kategorie": "Haaptplat",
   "portionen": 4,
   "zeit_minuten": 40,
   "schwierigkeit": "einfach",
-  "tags": ["luxemburgisch", "vegetarisch"],
-  "beschreibung": "Ein bis zwei Sätze, worum es geht.",
+  "tags": ["lëtzebuergesch", "vegetaresch"],
+  "beschreibung": "Een oder zwee Sätz, ëm wat et geet.",
   "zutaten": [
-    "1 kg mehligkochende Kartoffeln",
-    "2 Zwiebeln",
-    { "gruppe": "Zum Braten", "liste": ["Sonnenblumenöl"] }
+    "1 kg mielzeg Gromperen",
+    "2 Ënnen",
+    { "gruppe": "Fir ze broden", "liste": ["Sonneblummenueleg"] }
   ],
   "schritte": [
-    "Kartoffeln schälen und fein reiben.",
+    "Gromperen schielen a fein raffen.",
     "…"
   ],
   "tipps": "Optional: Tipps, Varianten.",
-  "quelle": "Optional: Oma / Buch / URL",
-  "bild": "Optional: URL zu einem Foto",
+  "quelle": "Optional: Bomi / Buch / URL",
+  "bild": "Optional: URL zu engem Foto",
   "hinzugefuegt": "2026-10-25"
 }
 ```
 
 Pflichtfelder: `titel`, `autor`, `kategorie`, `zutaten`, `schritte`.
 
-- `kategorie` – genau eins von: `Frühstück`, `Vorspeise`, `Suppe`, `Salat`,
-  `Hauptgericht`, `Beilage`, `Dessert`, `Backen`, `Snack`, `Getränk`, `Sonstiges`.
-- `schwierigkeit` – `einfach`, `mittel` oder `schwer`.
-- `zutaten` – Strings mit Menge vorne („200 g Mehl“). Für Abschnitte
-  (Teig / Füllung …) ein Objekt `{ "gruppe": "…", "liste": [ … ] }`.
+- `kategorie` – genau eins von: `Fréistéck`, `Virspeis`, `Zopp`, `Zalot`,
+  `Haaptplat`, `Bäilag`, `Dessert`, `Kuch & Gebäck`, `Snack`, `Gedrénks`, `Anescht`.
+- `schwierigkeit` – `einfach`, `mëttel` oder `schwéier`.
+- `zutaten` – Strings mit Menge vorne („200 g Miel“). Für Abschnitte
+  (Deeg / Fëllung …) ein Objekt `{ "gruppe": "…", "liste": [ … ] }`.
 - `schritte` – ein String pro Arbeitsschritt, ohne Nummer davor.
 - `hinzugefuegt` – heutiges Datum, `JJJJ-MM-TT`.
 - Unbekannte Felder weglassen statt leer lassen.

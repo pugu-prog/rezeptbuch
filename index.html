@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="lb">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unser Rezeptbuch</title>
+<title>Eist Rezeptbuch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -73,18 +73,19 @@ footer{color:var(--muted);font-size:.85rem;padding:20px 0 40px;border-top:1px so
 <body>
 <div class="wrap">
   <header>
-    <h1><a href="#/">Unser Rezeptbuch</a></h1>
-    <div class="sub">Gesammelt von Guy, Louis &amp; Jacques</div>
+    <h1><a href="#/">Eist Rezeptbuch</a></h1>
+    <div class="sub">Gesammelt vum Guy, Louis &amp; Jacques</div>
   </header>
-  <main id="app"><p class="empty">Rezepte werden geladen…</p></main>
-  <footer>Neue Rezepte kommen über Claude dazu – einfach sagen: „Füg dieses Rezept ins Familien-Rezeptbuch ein.“</footer>
+  <main id="app"><p class="empty">Rezepter gi gelueden…</p></main>
+  <footer>Nei Rezepter kommen iwwer Claude dobäi – einfach soen: „Setz dëst Rezept an eist Famill-Rezeptbuch.“</footer>
 </div>
 <script>
-const EMOJI = {"Frühstück":"🥐","Vorspeise":"🥗","Suppe":"🍲","Salat":"🥬","Hauptgericht":"🍽️","Beilage":"🥔","Dessert":"🍮","Backen":"🍰","Snack":"🥨","Getränk":"🥤","Sonstiges":"📒"};
+const EMOJI = {"Fréistéck":"🥐","Virspeis":"🥗","Zopp":"🍲","Zalot":"🥬","Haaptplat":"🍽️","Bäilag":"🥔","Dessert":"🍮","Kuch & Gebäck":"🍰","Snack":"🥨","Gedrénks":"🥤","Anescht":"📒"};
+const NIVEAU = {"einfach":"einfach","mëttel":"mëttel","schwéier":"schwéier"};
 const app = document.getElementById("app");
 let rezepte = [], filter = {q:"", kat:"", autor:""};
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const zeit = m => !m ? "" : m < 60 ? `${m} Min.` : `${Math.floor(m/60)} Std.${m%60 ? " " + m%60 + " Min." : ""}`;
+const zeit = m => !m ? "" : m < 60 ? `${m} Min.` : `${Math.floor(m/60)} St.${m%60 ? " " + m%60 + " Min." : ""}`;
 
 async function laden(){
   try{
@@ -92,7 +93,7 @@ async function laden(){
     if(!r.ok) throw 0;
     rezepte = await r.json();
   }catch{
-    app.innerHTML = '<p class="empty">Rezepte konnten nicht geladen werden.</p>'; return;
+    app.innerHTML = '<p class="empty">D’Rezepter konnten net geluede ginn.</p>'; return;
   }
   route();
 }
@@ -109,13 +110,13 @@ function chips(name, werte, alle){
 }
 
 function liste(){
-  document.title = "Unser Rezeptbuch";
+  document.title = "Eist Rezeptbuch";
   const kats = [...new Set(rezepte.map(r=>r.kategorie))].sort();
   const autoren = [...new Set(rezepte.map(r=>r.autor))].sort();
   app.innerHTML = `
-    <div class="controls"><input id="q" type="search" placeholder="Rezept, Zutat oder Tag suchen…" value="${esc(filter.q)}"></div>
-    ${chips("kat", kats, "Alle Kategorien")}
-    ${chips("autor", autoren, "Alle Köche")}
+    <div class="controls"><input id="q" type="search" placeholder="Rezept, Zutat oder Stéchwuert sichen…" value="${esc(filter.q)}"></div>
+    ${chips("kat", kats, "All Kategorien")}
+    ${chips("autor", autoren, "All Käch")}
     <div class="grid" id="grid"></div>`;
   const q = document.getElementById("q");
   q.addEventListener("input", () => { filter.q = q.value; karten(); });
@@ -142,7 +143,7 @@ function karten(){
         <h3>${esc(r.titel)}</h3>
         <div class="meta"><span class="who ${esc(r.autor)}">${esc(r.autor)}</span><span>${esc(r.kategorie)}</span>${r.zeit_minuten?`<span>⏱ ${zeit(r.zeit_minuten)}</span>`:""}</div>
       </div>
-    </a>`).join("") : `<p class="empty">Nichts gefunden.</p>`;
+    </a>`).join("") : `<p class="empty">Näischt fonnt.</p>`;
 }
 
 function zutatenHtml(z){
@@ -157,30 +158,30 @@ function zutatenHtml(z){
 
 function detail(slug){
   const r = rezepte.find(x => x.slug === slug);
-  if(!r){ app.innerHTML = `<a class="back" href="#/">← Alle Rezepte</a><p class="empty">Rezept nicht gefunden.</p>`; return; }
-  document.title = r.titel + " – Unser Rezeptbuch";
+  if(!r){ app.innerHTML = `<a class="back" href="#/">← All Rezepter</a><p class="empty">Rezept net fonnt.</p>`; return; }
+  document.title = r.titel + " – Eist Rezeptbuch";
   const facts = [
-    r.portionen && `🍴 ${r.portionen} Portionen`,
+    r.portionen && `🍴 ${r.portionen} Portiounen`,
     r.zeit_minuten && `⏱ ${zeit(r.zeit_minuten)}`,
-    r.schwierigkeit && `📈 ${r.schwierigkeit}`,
+    r.schwierigkeit && `📈 ${NIVEAU[r.schwierigkeit]||r.schwierigkeit}`,
     `${EMOJI[r.kategorie]||"📒"} ${r.kategorie}`,
   ].filter(Boolean);
   app.innerHTML = `
-    <a class="back" href="#/">← Alle Rezepte</a>
+    <a class="back" href="#/">← All Rezepter</a>
     <article class="detail">
       ${r.bild ? `<img class="hero" src="${esc(r.bild)}" alt="">` : ""}
       <h2>${esc(r.titel)}</h2>
-      <div class="meta" style="margin-top:8px">von <span class="who ${esc(r.autor)}">${esc(r.autor)}</span>${r.hinzugefuegt?` · ${new Date(r.hinzugefuegt).toLocaleDateString("de-LU")}`:""}</div>
+      <div class="meta" style="margin-top:8px">vum <span class="who ${esc(r.autor)}">${esc(r.autor)}</span>${r.hinzugefuegt?` · ${new Date(r.hinzugefuegt).toLocaleDateString("de-LU")}`:""}</div>
       ${r.beschreibung ? `<p class="desc">${esc(r.beschreibung)}</p>` : ""}
       <div class="facts">${facts.map(f=>`<span class="fact">${esc(f)}</span>`).join("")}</div>
       <div class="cols">
         <div class="box"><h3>Zutaten</h3>${zutatenHtml(r.zutaten||[])}</div>
-        <div class="box"><h3>Zubereitung</h3><ol class="steps">${(r.schritte||[]).map(s=>`<li>${esc(s)}</li>`).join("")}</ol></div>
+        <div class="box"><h3>Preparatioun</h3><ol class="steps">${(r.schritte||[]).map(s=>`<li>${esc(s)}</li>`).join("")}</ol></div>
       </div>
       ${r.tipps ? `<div class="note"><strong>Tipp:</strong> ${esc(r.tipps)}</div>` : ""}
-      ${r.quelle ? `<p class="meta" style="margin-top:14px">Quelle: ${/^https?:/.test(r.quelle) ? `<a href="${esc(r.quelle)}" target="_blank" rel="noopener">${esc(r.quelle)}</a>` : esc(r.quelle)}</p>` : ""}
+      ${r.quelle ? `<p class="meta" style="margin-top:14px">Quell: ${/^https?:/.test(r.quelle) ? `<a href="${esc(r.quelle)}" target="_blank" rel="noopener">${esc(r.quelle)}</a>` : esc(r.quelle)}</p>` : ""}
       ${(r.tags||[]).length ? `<div class="tags">${r.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</div>` : ""}
-      <div class="actions"><button class="btn" onclick="print()">Drucken</button></div>
+      <div class="actions"><button class="btn" onclick="print()">Drécken</button></div>
     </article>`;
   app.querySelectorAll(".ing li").forEach(li => li.onclick = e => {
     const cb = li.querySelector("input"); if(e.target !== cb) cb.checked = !cb.checked;

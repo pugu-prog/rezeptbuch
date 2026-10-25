@@ -5,8 +5,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KATEGORIEN = {"Frühstück", "Vorspeise", "Suppe", "Salat", "Hauptgericht", "Beilage",
-              "Dessert", "Backen", "Snack", "Getränk", "Sonstiges"}
+KATEGORIEN = {"Fréistéck", "Virspeis", "Zopp", "Zalot", "Haaptplat", "Bäilag",
+              "Dessert", "Kuch & Gebäck", "Snack", "Gedrénks", "Anescht"}
+NIVEAUEN = {"einfach", "mëttel", "schwéier"}
 PFLICHT = ("titel", "autor", "kategorie", "zutaten", "schritte")
 
 
@@ -16,6 +17,8 @@ def pruefen(pfad, r):
         fehler.append(f"unbekannte Kategorie: {r['kategorie']}")
     if not isinstance(r.get("zutaten", []), list) or not isinstance(r.get("schritte", []), list):
         fehler.append("zutaten und schritte müssen Listen sein")
+    if r.get("schwierigkeit") and r["schwierigkeit"] not in NIVEAUEN:
+        fehler.append(f"onbekannt Schwieregkeet: {r['schwierigkeit']}")
     return [f"{pfad.name}: {f}" for f in fehler]
 
 

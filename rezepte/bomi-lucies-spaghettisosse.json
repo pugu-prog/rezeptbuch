@@ -1,31 +1,31 @@
 {
-  "titel": "Bomi Lucies Spaghettisoße",
+  "titel": "Bomi Lucy hir Spaghettiszooss",
   "autor": "Guy",
-  "kategorie": "Hauptgericht",
+  "kategorie": "Haaptplat",
   "portionen": 12,
   "zeit_minuten": 105,
   "schwierigkeit": "einfach",
-  "tags": ["Familienrezept", "Pasta", "Hackfleisch", "Bomi Lucy"],
-  "beschreibung": "Nach Omas handgeschriebenem Zettel. Alle Mengen richten sich nach dem Hackfleisch – pro kg reicht es für etwa 4 Portionen (Mengen gelten für 3 kg).",
+  "tags": ["Familljerezept", "Pasta", "Gehacktes", "Bomi Lucy"],
+  "beschreibung": "No der Bomi hirem handgeschriwwenen Zettel. All Quantitéiten riichte sech nom Gehacktem – pro kg geet et fir ronn 4 Portiounen (d'Quantitéiten hei si fir 3 kg).",
   "zutaten": [
-    "3 kg Hackfleisch, halb Schwein / halb Rind",
-    "4 Zehen Knoblauch",
-    "2 dicke Zwiebeln",
-    "1 Dose Tomatenmark",
-    "2–3 l geschälte Tomaten (Tomates pelées)",
-    "etwas Butter oder Ghee zum Anbraten",
-    "Wasser oder Brühe nach Bedarf"
+    "3 kg Gehacktes, hallef Schwäin / hallef Rand",
+    "4 Zéiwe Knuewelek",
+    "2 déck Ënnen",
+    "1 Dous Tomatepüree",
+    "2–3 l geschielten Tomaten (Tomates pelées)",
+    "e bësse Botter oder Ghee fir unzebroden",
+    "Waasser oder Bouillon no Bedarf"
   ],
   "schritte": [
-    "Zwiebeln und Knoblauch fein hacken und in Butter anbraten.",
-    "Das Hackfleisch ganz fein zerkrümeln und dann in der Pfanne ebenfalls in Butter (oder Ghee) anbraten.",
-    "Mit Wasser aufgießen (oder Brühe).",
-    "Dann Tomatenmark dazugeben, bis es reicht.",
-    "Lange kochen lassen: 1 bis 1,5 Stunden.",
-    "In einem anderen Topf die geschälten Tomaten aufwärmen und pürieren.",
-    "Dann mit dem anderen vermischen."
+    "Ënnen a Knuewelek fein hacken an am Botter unbroden.",
+    "D'Gehacktes ganz fein zerkrëmmelen an dann an der Pan och am Botter (oder Ghee) unbroden.",
+    "Mat Waasser (oder Bouillon) opgoss.",
+    "Dann Tomatepüree derbäi ginn, bis et duergeet.",
+    "Laang kache loossen: 1 bis 1,5 Stonnen.",
+    "An engem aneren Dëppen déi geschielten Tomaten opwiermen a pürieren.",
+    "Dann alles mateneen vermëschen."
   ],
-  "tipps": "Wichtig: Zwiebeln und Fleisch werden immer mit Butter angebraten. Salz und Pfeffer stehen nicht auf dem Zettel – am Schluss abschmecken. Für weniger Fleisch alle Mengen anteilig umrechnen (pro 1 kg Hackfleisch: gut 1 Zehe Knoblauch, ⅔ Zwiebel, ⅓ Dose Tomatenmark, 0,7–1 l geschälte Tomaten).",
-  "quelle": "Bomi Lucies handgeschriebener Zettel",
+  "tipps": "Wichteg: Ënnen a Fleesch ginn ëmmer am Botter ugebroden. Salz a Peffer stinn net um Zettel – um Schluss ofschmaachen. Fir manner Fleesch all Quantitéiten proportional ëmrechnen (pro 1 kg Gehacktes: gutt 1 Zéif Knuewelek, ⅔ Ënn, ⅓ Dous Tomatepüree, 0,7–1 l geschielten Tomaten).",
+  "quelle": "Handgeschriwwenen Zettel vun der Bomi Lucy",
   "hinzugefuegt": "2026-10-25"
 }

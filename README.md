@@ -1,6 +1,6 @@
-# Unser Rezeptbuch
+# Eist Rezeptbuch
 
-Gemeinsames Familien-Rezeptbuch von Guy, Louis & Jacques.
+Gemeinsames Famill-Rezeptbuch von Guy, Louis & Jacques.
 
 **Webseite:** https://pugu-prog.github.io/rezeptbuch/
 
@@ -16,7 +16,7 @@ Rezepte liegen als JSON-Dateien in [`rezepte/`](rezepte/). Neue Rezepte kommen
    - **claude.ai:** unter *Einstellungen → Konnektoren* den GitHub-Konnektor
      hinzufügen und mit dem eigenen GitHub-Konto verbinden.
 3. Zu Claude sagen, z. B.:
-   > Füg dieses Rezept ins Familien-Rezeptbuch ein (GitHub-Repo pugu-prog/rezeptbuch,
-   > Regeln in CLAUDE.md). Ich bin Louis. *[Rezept, Foto oder Link]*
+   > Setz dëst Rezept an eist Famill-Rezeptbuch (GitHub-Repo pugu-prog/rezeptbuch,
+   > Reegelen an der CLAUDE.md). Ech sinn de Louis. *[Rezept, Foto oder Link]*
 
 Nach ca. einer Minute ist das Rezept auf der Webseite.

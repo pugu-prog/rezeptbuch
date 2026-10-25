@@ -1,0 +1,56 @@
+{
+  "titel": "Brownies glutenfräi",
+  "autor": "Louis",
+  "kategorie": "Kuch & Gebäck",
+  "zeit_minuten": 55,
+  "schwierigkeit": "einfach",
+  "tags": ["glutenfräi", "ouni Zocker", "Brownie", "Schockela", "Bounen"],
+  "beschreibung": "Gesond, glutenfräi a ouni raffinéierten Zocker: saftege Brownies aus schwaarze Bounen a Datelen. Hei stinn d'Original (Chefkoch) an dem Louis seng Variant mat Hunneg a Proteinpulver beieneen.",
+  "zutaten": [
+    {
+      "gruppe": "Original (Chefkoch)",
+      "liste": [
+        "1 Dous schwaarz Bounen (Ofdropgewiicht 250 g) *",
+        "2 Eeër",
+        "5 Datelen (Medjool), entsteent **",
+        "50 g Kakaopulver",
+        "80 ml Ahornsirop",
+        "1 TL Vanilleextrakt",
+        "½ TL Natron",
+        "1 Prise Salz",
+        "120 g Botter",
+        "80 g Pekannëss"
+      ]
+    },
+    {
+      "gruppe": "Dem Louis seng Variant (dobbel Mengen)",
+      "liste": [
+        "2 Dousen schwaarz Bounen / Kidneybounen",
+        "4 Eeër",
+        "14 Datelen (Medjool)",
+        "100 g Kakaopulver",
+        "120 ml Hunneg (amplaz Ahornsirop)",
+        "2 TL Vanilleproteinpulver (amplaz Vanilleextrakt)",
+        "1 TL Backpulver (amplaz Natron)",
+        "240 g Botter",
+        "110 g Pekannëss"
+      ]
+    }
+  ],
+  "schritte": [
+    "De Backoffen op 170 °C Ëmloft (190 °C Uewer- an Ënnerhëtzt) virwiermen an eng rechteckeg Backform vun ongeféier 21 x 24 cm mat Backpabeier auslegen oder anfetten.",
+    "D'Botter schmëlzen an e bëssen ofkille loossen.",
+    "D'Bounen (ofgedroppt), d'Eeër, d'Datelen, d'Kakaopulver, den Ahornsirop (bzw. Hunneg), de Vanilleextrakt (bzw. d'Vanilleproteinpulver), den Natron (bzw. d'Backpulver) an d'Salz an der Kichemaschinn zerklengeren an dann glat püréieren.",
+    "Dann déi flësseg Botter bei lafender Maschinn drageien.",
+    "Den Deeg an déi virbereet Form fëllen an d'Uewerfläch duerch sanftes Klappe vun der Form glat maachen. D'Pekannëss grob hacken an op d'Uewerfläch vun de Brownies verdeelen.",
+    "D'Brownies op der mëttlerer Schinn ongeféier 40 Minutten backen, bis de Kuch fest ass an d'Uewerfläch liicht rësseg ginn ass. Erausholen a ganz ofkille loossen.",
+    "Brount d'Uewerfläch ze séier, d'Form no der Hallschent vun der Backzäit mat Alufolie ofdecken."
+  ],
+  "tipps": [
+    "* Entweder 250 g ofgedropte Bounen aus der Dous huelen, oder 100 g gedréchent Bounen, déi iwwer Nuecht amweechen an duerno gekacht ginn.",
+    "** Entweder Medjool-Datelen huelen, oder normal Datelen, déi virdru ongeféier 20 Minutten a lauwarmem Waasser amweechen.",
+    "D'Variant mécht dobbel sou vill Deeg wéi d'Original – d'Form an d'Backzäit dofir upassen."
+  ],
+  "quelle": "https://www.chefkoch.de/rezepte/3055881458202629/Gesunde-Brownies-glutenfrei-zuckerfrei.html",
+  "hinzugefuegt": "2026-10-25"
+}

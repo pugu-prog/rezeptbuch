@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unser Rezeptbuch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6ef; --card:#fffdf9; --ink:#2b2420; --muted:#7a6d63; --line:#e8dfd2;
+  --accent:#c0532b; --accent-soft:#f6e3d8;
+  --guy:#3b6e8f; --louis:#5b8a3a; --jack:#a2507a;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1c1917; --card:#26211e; --ink:#f2ebe3; --muted:#a8998c; --line:#3a332e;
+  --accent:#e2774d; --accent-soft:#3d2a20;
+  --guy:#7fb0d1; --louis:#9cc77a; --jack:#d690b6;
+}}
+:root[data-theme="dark"]{
+  --bg:#1c1917; --card:#26211e; --ink:#f2ebe3; --muted:#a8998c; --line:#3a332e;
+  --accent:#e2774d; --accent-soft:#3d2a20;
+  --guy:#7fb0d1; --louis:#9cc77a; --jack:#d690b6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:40px 0 20px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;margin:0;line-height:1.15}
+h1{font-size:clamp(2rem,6vw,3rem)}
+h1 a{text-decoration:none}
+.sub{color:var(--muted);margin-top:6px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 10px}
+.controls input{flex:1 1 240px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 12px;border-radius:99px;font:500 .88rem Inter,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin:20px 0 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgb(0 0 0 / .08)}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.card .ph{aspect-ratio:16/10;background:var(--accent-soft);display:grid;place-items:center;font-size:2.6rem}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1.2rem}
+.meta{display:flex;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.85rem}
+.who{font-weight:600}
+.who.Guy{color:var(--guy)} .who.Louis{color:var(--louis)} .who.Jack{color:var(--jack)}
+.empty{color:var(--muted);padding:40px 0;text-align:center}
+/* Detail */
+.back{display:inline-block;margin:28px 0 14px;color:var(--muted);text-decoration:none;font-weight:500}
+.hero{width:100%;max-height:380px;object-fit:cover;border-radius:14px;margin-bottom:20px}
+.detail h2{font-size:clamp(1.8rem,5vw,2.6rem)}
+.detail .desc{font-size:1.08rem;margin:10px 0 0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 26px}
+.fact{background:var(--accent-soft);padding:6px 12px;border-radius:8px;font-size:.9rem}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px}
+@media (max-width:720px){.cols{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.box h3{font-size:1.25rem;margin-bottom:10px}
+.box h4{margin:14px 0 4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.ing{list-style:none;padding:0;margin:0}
+.ing li{padding:6px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:baseline;cursor:pointer}
+.ing li:last-child{border-bottom:0}
+.ing li input{accent-color:var(--accent)}
+.ing li.done span{text-decoration:line-through;color:var(--muted)}
+ol.steps{padding:0;margin:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 18px 44px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:600;font-size:.9rem}
+.note{margin-top:22px;padding:14px 18px;border-left:4px solid var(--accent);background:var(--card);border-radius:0 10px 10px 0}
+.tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.8rem;color:var(--muted);border:1px solid var(--line);padding:2px 9px;border-radius:99px}
+.actions{margin:26px 0 60px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:9px;font:500 .9rem Inter,sans-serif;cursor:pointer;text-decoration:none}
+footer{color:var(--muted);font-size:.85rem;padding:20px 0 40px;border-top:1px solid var(--line)}
+@media print{
+  header .controls,.chips,.back,.actions,footer{display:none}
+  body{background:#fff;color:#000}.box{border:0;padding:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><a href="#/">Unser Rezeptbuch</a></h1>
+    <div class="sub">Gesammelt von Guy, Louis &amp; Jack</div>
+  </header>
+  <main id="app"><p class="empty">Rezepte werden geladen…</p></main>
+  <footer>Neue Rezepte kommen über Claude dazu – einfach sagen: „Füg dieses Rezept ins Familien-Rezeptbuch ein.“</footer>
+</div>
+<script>
+const EMOJI = {"Frühstück":"🥐","Vorspeise":"🥗","Suppe":"🍲","Salat":"🥬","Hauptgericht":"🍽️","Beilage":"🥔","Dessert":"🍮","Backen":"🍰","Snack":"🥨","Getränk":"🥤","Sonstiges":"📒"};
+const app = document.getElementById("app");
+let rezepte = [], filter = {q:"", kat:"", autor:""};
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const zeit = m => !m ? "" : m < 60 ? `${m} Min.` : `${Math.floor(m/60)} Std.${m%60 ? " " + m%60 + " Min." : ""}`;
+
+async function laden(){
+  try{
+    const r = await fetch("rezepte.json", {cache:"no-store"});
+    if(!r.ok) throw 0;
+    rezepte = await r.json();
+  }catch{
+    app.innerHTML = '<p class="empty">Rezepte konnten nicht geladen werden.</p>'; return;
+  }
+  route();
+}
+
+function route(){
+  const m = location.hash.match(/^#\/rezept\/(.+)$/);
+  if(m){ detail(decodeURIComponent(m[1])); } else { liste(); }
+  window.scrollTo(0,0);
+}
+
+function chips(name, werte, alle){
+  return `<div class="chips">` + [["",alle], ...werte.map(w=>[w,w])].map(([v,l]) =>
+    `<button class="chip" data-f="${name}" data-v="${esc(v)}" aria-pressed="${filter[name]===v}">${esc(l)}</button>`).join("") + `</div>`;
+}
+
+function liste(){
+  document.title = "Unser Rezeptbuch";
+  const kats = [...new Set(rezepte.map(r=>r.kategorie))].sort();
+  const autoren = [...new Set(rezepte.map(r=>r.autor))].sort();
+  app.innerHTML = `
+    <div class="controls"><input id="q" type="search" placeholder="Rezept, Zutat oder Tag suchen…" value="${esc(filter.q)}"></div>
+    ${chips("kat", kats, "Alle Kategorien")}
+    ${chips("autor", autoren, "Alle Köche")}
+    <div class="grid" id="grid"></div>`;
+  const q = document.getElementById("q");
+  q.addEventListener("input", () => { filter.q = q.value; karten(); });
+  app.querySelectorAll(".chip").forEach(b => b.onclick = () => {
+    filter[b.dataset.f] = b.dataset.v;
+    app.querySelectorAll(`.chip[data-f="${b.dataset.f}"]`).forEach(x => x.setAttribute("aria-pressed", x===b));
+    karten();
+  });
+  karten();
+}
+
+function flach(z){ return z.flatMap(x => typeof x === "string" ? [x] : [x.gruppe, ...(x.liste||[])]); }
+
+function karten(){
+  const q = filter.q.trim().toLowerCase();
+  const treffer = rezepte.filter(r =>
+    (!filter.kat || r.kategorie === filter.kat) &&
+    (!filter.autor || r.autor === filter.autor) &&
+    (!q || [r.titel, r.beschreibung, ...(r.tags||[]), ...flach(r.zutaten||[])].join(" ").toLowerCase().includes(q)));
+  document.getElementById("grid").innerHTML = treffer.length ? treffer.map(r => `
+    <a class="card" href="#/rezept/${encodeURIComponent(r.slug)}">
+      ${r.bild ? `<img src="${esc(r.bild)}" alt="" loading="lazy">` : `<div class="ph">${EMOJI[r.kategorie]||"📒"}</div>`}
+      <div class="body">
+        <h3>${esc(r.titel)}</h3>
+        <div class="meta"><span class="who ${esc(r.autor)}">${esc(r.autor)}</span><span>${esc(r.kategorie)}</span>${r.zeit_minuten?`<span>⏱ ${zeit(r.zeit_minuten)}</span>`:""}</div>
+      </div>
+    </a>`).join("") : `<p class="empty">Nichts gefunden.</p>`;
+}
+
+function zutatenHtml(z){
+  let html = "", offen = false;
+  const li = s => `<li><input type="checkbox"><span>${esc(s)}</span></li>`;
+  for(const x of z){
+    if(typeof x === "string"){ if(!offen){ html += `<ul class="ing">`; offen = true; } html += li(x); }
+    else { if(offen){ html += `</ul>`; offen = false; } html += `<h4>${esc(x.gruppe)}</h4><ul class="ing">${(x.liste||[]).map(li).join("")}</ul>`; }
+  }
+  return html + (offen ? `</ul>` : "");
+}
+
+function detail(slug){
+  const r = rezepte.find(x => x.slug === slug);
+  if(!r){ app.innerHTML = `<a class="back" href="#/">← Alle Rezepte</a><p class="empty">Rezept nicht gefunden.</p>`; return; }
+  document.title = r.titel + " – Unser Rezeptbuch";
+  const facts = [
+    r.portionen && `🍴 ${r.portionen} Portionen`,
+    r.zeit_minuten && `⏱ ${zeit(r.zeit_minuten)}`,
+    r.schwierigkeit && `📈 ${r.schwierigkeit}`,
+    `${EMOJI[r.kategorie]||"📒"} ${r.kategorie}`,
+  ].filter(Boolean);
+  app.innerHTML = `
+    <a class="back" href="#/">← Alle Rezepte</a>
+    <article class="detail">
+      ${r.bild ? `<img class="hero" src="${esc(r.bild)}" alt="">` : ""}
+      <h2>${esc(r.titel)}</h2>
+      <div class="meta" style="margin-top:8px">von <span class="who ${esc(r.autor)}">${esc(r.autor)}</span>${r.hinzugefuegt?` · ${new Date(r.hinzugefuegt).toLocaleDateString("de-LU")}`:""}</div>
+      ${r.beschreibung ? `<p class="desc">${esc(r.beschreibung)}</p>` : ""}
+      <div class="facts">${facts.map(f=>`<span class="fact">${esc(f)}</span>`).join("")}</div>
+      <div class="cols">
+        <div class="box"><h3>Zutaten</h3>${zutatenHtml(r.zutaten||[])}</div>
+        <div class="box"><h3>Zubereitung</h3><ol class="steps">${(r.schritte||[]).map(s=>`<li>${esc(s)}</li>`).join("")}</ol></div>
+      </div>
+      ${r.tipps ? `<div class="note"><strong>Tipp:</strong> ${esc(r.tipps)}</div>` : ""}
+      ${r.quelle ? `<p class="meta" style="margin-top:14px">Quelle: ${/^https?:/.test(r.quelle) ? `<a href="${esc(r.quelle)}" target="_blank" rel="noopener">${esc(r.quelle)}</a>` : esc(r.quelle)}</p>` : ""}
+      ${(r.tags||[]).length ? `<div class="tags">${r.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</div>` : ""}
+      <div class="actions"><button class="btn" onclick="print()">Drucken</button></div>
+    </article>`;
+  app.querySelectorAll(".ing li").forEach(li => li.onclick = e => {
+    const cb = li.querySelector("input"); if(e.target !== cb) cb.checked = !cb.checked;
+    li.classList.toggle("done", cb.checked);
+  });
+}
+
+addEventListener("hashchange", route);
+laden();
+</script>
+</body>
+</html>

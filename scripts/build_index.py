@@ -21,6 +21,10 @@ def pruefen(pfad, r):
         if not isinstance(n, dict) or not n.get("autor") or not n.get("text"):
             fehler.append("jede Notiz braucht autor und text")
             break
+    for feld in ("bild", "rezeptblat"):
+        bild = r.get(feld, "")
+        if bild and not bild.startswith("http") and not (ROOT / bild).is_file():
+            fehler.append(f"Bild fehlt: {bild}")
     if r.get("schwierigkeit") and r["schwierigkeit"] not in NIVEAUEN:
         fehler.append(f"onbekannt Schwieregkeet: {r['schwierigkeit']}")
     return [f"{pfad.name}: {f}" for f in fehler]

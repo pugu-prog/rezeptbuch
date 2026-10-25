@@ -55,7 +55,7 @@ Wer ist der Autor? Den Nutzer fragen, falls nicht klar: `Guy`, `Louis` oder `Jac
   "tipps": ["Optional: ein Tipp pro Eintrag", "Varianten …"],
   "notizen": [{ "autor": "Louis", "datum": "2026-10-26", "text": "Mit Chili noch besser." }],
   "quelle": "Optional: Bomi / Buch / URL",
-  "bild": "Optional: URL zu engem Foto",
+  "bild": "bilder/gromperekichelcher.jpg",
   "hinzugefuegt": "2026-10-25"
 }
 ```
@@ -70,6 +70,15 @@ Pflichtfelder: `titel`, `autor`, `kategorie`, `zutaten`, `schritte`.
 - `schritte` – ein String pro Arbeitsschritt, ohne Nummer davor.
 - `hinzugefuegt` – heutiges Datum, `JJJJ-MM-TT`.
 - Unbekannte Felder weglassen statt leer lassen.
+
+**Bilder:** Schickt der Nutzer ein Foto vom Gericht (oder ein Rezeptblatt mit
+Bild), als `bilder/<slug>.jpg` speichern (gleicher Slug wie die Rezeptdatei,
+lange Seite höchstens 1600 px, JPEG) und im Rezept `"bild": "bilder/<slug>.jpg"`
+eintragen. Bild und Rezept im selben Commit. Ohne Foto das Feld weglassen.
+Ein abfotografiertes Rezeptblatt/Zettel zusätzlich als
+`bilder/<slug>-rezeptblat.jpg` speichern und `"rezeptblat"` setzen.
+Fremde Fotos nur mit freier Lizenz (z. B. Wikimedia Commons CC0/CC BY) und
+mit `"bild_quelle": "Foto: <Autor>, <Lizenz> – <URL>"`.
 
 Wenn der Nutzer ein Foto, einen Screenshot, ein PDF oder eine Webseite
 schickt: Rezept daraus abtippen, in dieses Format bringen, kurz zeigen und

@@ -5,7 +5,12 @@
   "portionen": 12,
   "zeit_minuten": 105,
   "schwierigkeit": "einfach",
-  "tags": ["Familljerezept", "Pasta", "Gehacktes", "Bomi Lucie"],
+  "tags": [
+    "Familljerezept",
+    "Pasta",
+    "Gehacktes",
+    "Bomi Lucie"
+  ],
   "beschreibung": "No der Bomi hirem handgeschriwwenen Zettel. All Quantitéiten riichte sech nom Gehacktem – pro kg geet et fir ronn 4 Portiounen (d'Quantitéiten hei si fir 3 kg).",
   "zutaten": [
     "3 kg Gehacktes, hallef Schwäin / hallef Rand",
@@ -27,5 +32,7 @@
   ],
   "tipps": "Wichteg: Ënnen a Fleesch ginn ëmmer am Botter ugebroden. Salz a Peffer stinn net um Zettel – um Schluss ofschmaachen. Fir manner Fleesch all Quantitéiten proportional ëmrechnen (pro 1 kg Gehacktes: gutt 1 Zéif Knuewelek, ⅔ Ënn, ⅓ Dous Tomatepüree, 0,7–1 l geschielten Tomaten).",
   "quelle": "Handgeschriwwenen Zettel vun der Bomi Lucie",
+  "bild": "bilder/bomi-lucies-spaghettisosse.jpg",
+  "bild_quelle": "Beispillfoto: Andy Li, CC0 – https://commons.wikimedia.org/wiki/File:Spaghetti_bolognese_-_Enzo%27s_2026-04-21.jpg",
   "hinzugefuegt": "2026-10-25"
 }

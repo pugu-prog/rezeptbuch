@@ -40,7 +40,9 @@ h1 a{text-decoration:none}
 .empty{color:var(--muted);padding:40px 0;text-align:center}
 /* Detail */
 .back{display:inline-block;margin:28px 0 14px;color:var(--muted);text-decoration:none;font-weight:500}
-.hero{width:100%;max-height:380px;object-fit:cover;border-radius:14px;margin-bottom:20px}
+.hero{display:block;margin-bottom:6px}.hero img{display:block;max-width:100%;max-height:440px;border-radius:14px;border:1px solid var(--line)}
+.credit{color:var(--muted);font-size:.75rem;margin:0 0 20px}.credit a{color:inherit}
+.blat{margin-top:22px;color:var(--muted);font-size:.85rem}.blat img{display:block;max-width:260px;width:100%;border-radius:10px;border:1px solid var(--line);margin-top:8px}
 .detail h2{font-size:clamp(1.8rem,5vw,2.6rem)}
 .detail .desc{font-size:1.08rem;margin:10px 0 0}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 26px}
@@ -187,7 +189,7 @@ function detail(slug){
   app.innerHTML = `
     <a class="back" href="#/">← All Rezepter</a>
     <article class="detail">
-      ${r.bild ? `<img class="hero" src="${esc(r.bild)}" alt="">` : ""}
+      ${r.bild ? `<a class="hero" href="${esc(r.bild)}" target="_blank" rel="noopener" title="Bild grouss opmaachen"><img src="${esc(r.bild)}" alt="${esc(r.titel)}"></a>${r.bild_quelle ? `<p class="credit">${linkify(r.bild_quelle)}</p>` : `<div style="height:14px"></div>`}` : ""}
       <h2>${esc(r.titel)}</h2>
       <div class="meta" style="margin-top:8px">vum <span class="who ${esc(r.autor)}">${esc(r.autor)}</span>${r.hinzugefuegt?` · ${new Date(r.hinzugefuegt).toLocaleDateString("de-LU")}`:""}</div>
       ${r.beschreibung ? `<p class="desc">${esc(r.beschreibung)}</p>` : ""}
@@ -198,6 +200,7 @@ function detail(slug){
       </div>
       ${tippsHtml(r.tipps)}
       ${r.quelle ? `<p class="meta" style="margin-top:14px">Quell: ${/^https?:/.test(r.quelle) ? `<a href="${esc(r.quelle)}" target="_blank" rel="noopener">${esc(r.quelle)}</a>` : esc(r.quelle)}</p>` : ""}
+      ${r.rezeptblat ? `<div class="blat">Original-Rezeptblat (klicken fir grouss):<a href="${esc(r.rezeptblat)}" target="_blank" rel="noopener"><img src="${esc(r.rezeptblat)}" alt="Rezeptblat ${esc(r.titel)}" loading="lazy"></a></div>` : ""}
       ${(r.tags||[]).length ? `<div class="tags">${r.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</div>` : ""}
       <section class="notizen"><h3>Notizen &amp; Iddien</h3>
         ${(r.notizen||[]).map(n => `<div class="notiz"><div class="meta"><span class="who ${esc(n.autor)}">${esc(n.autor)}</span>${n.datum?`<span>${new Date(n.datum).toLocaleDateString("de-LU")}</span>`:""}</div>${esc(n.text)}</div>`).join("") || `<p class="notiz-neu">Nach keng Notizen.</p>`}
@@ -213,6 +216,8 @@ function detail(slug){
 
 const CLAUDE_LINK = "https://claude.ai/code?repositories=" + encodeURIComponent("pugu-prog/rezeptbuch") +
   "&prompt=" + encodeURIComponent("Setz dëst Rezept an eist Famill-Rezeptbuch (Reegelen an der CLAUDE.md). Ech sinn de ");
+
+function linkify(t){ return esc(t).replace(/(https?:\/\/\S+)/g, '<a href="$1" target="_blank" rel="noopener">Quell</a>'); }
 
 function tippsHtml(t){
   if(!t || (Array.isArray(t) && !t.length)) return "";

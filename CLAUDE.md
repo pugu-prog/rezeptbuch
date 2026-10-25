@@ -21,7 +21,10 @@ https://pugu-prog.github.io/rezeptbuch/
 3. **Vorher checken:** das fertige Rezept dem Nutzer kurz zeigen und bestätigen
    lassen. Wenn lokal möglich, `python3 scripts/build_index.py` laufen lassen
    (prüft Format, Kategorie, Schwierigkeit).
-4. Direkt auf `main` committen. Commit-Nachricht: `Rezept: <Titel> (<Autor>)`.
+4. Committen und pushen – am liebsten direkt auf `main`. In einer
+   Cloud-Sitzung (claude.ai/code) einfach auf dem eigenen Branch pushen,
+   **kein Pull Request nötig**: die Action `rezept-uebernehmen.yml` übernimmt
+   Branches, die nur `rezepte/*.json` ändern, automatisch nach `main`. Commit-Nachricht: `Rezept: <Titel> (<Autor>)`.
 5. Danach dem Nutzer den Link geben:
    `https://pugu-prog.github.io/rezeptbuch/#/rezept/<slug>`
    (ist nach ca. 1 Minute online).

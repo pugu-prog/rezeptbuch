@@ -1,0 +1,31 @@
+{
+  "titel": "Bomi Lucies Spaghettisoße",
+  "autor": "Guy",
+  "kategorie": "Hauptgericht",
+  "portionen": 12,
+  "zeit_minuten": 105,
+  "schwierigkeit": "einfach",
+  "tags": ["Familienrezept", "Pasta", "Hackfleisch", "Bomi Lucy"],
+  "beschreibung": "Nach Omas handgeschriebenem Zettel. Alle Mengen richten sich nach dem Hackfleisch – pro kg reicht es für etwa 4 Portionen (Mengen gelten für 3 kg).",
+  "zutaten": [
+    "3 kg Hackfleisch, halb Schwein / halb Rind",
+    "4 Zehen Knoblauch",
+    "2 dicke Zwiebeln",
+    "1 Dose Tomatenmark",
+    "2–3 l geschälte Tomaten (Tomates pelées)",
+    "etwas Butter oder Ghee zum Anbraten",
+    "Wasser oder Brühe nach Bedarf"
+  ],
+  "schritte": [
+    "Zwiebeln und Knoblauch fein hacken und in Butter anbraten.",
+    "Das Hackfleisch ganz fein zerkrümeln und dann in der Pfanne ebenfalls in Butter (oder Ghee) anbraten.",
+    "Mit Wasser aufgießen (oder Brühe).",
+    "Dann Tomatenmark dazugeben, bis es reicht.",
+    "Lange kochen lassen: 1 bis 1,5 Stunden.",
+    "In einem anderen Topf die geschälten Tomaten aufwärmen und pürieren.",
+    "Dann mit dem anderen vermischen."
+  ],
+  "tipps": "Wichtig: Zwiebeln und Fleisch werden immer mit Butter angebraten. Salz und Pfeffer stehen nicht auf dem Zettel – am Schluss abschmecken. Für weniger Fleisch alle Mengen anteilig umrechnen (pro 1 kg Hackfleisch: gut 1 Zehe Knoblauch, ⅔ Zwiebel, ⅓ Dose Tomatenmark, 0,7–1 l geschälte Tomaten).",
+  "quelle": "Bomi Lucies handgeschriebener Zettel",
+  "hinzugefuegt": "2026-10-25"
+}

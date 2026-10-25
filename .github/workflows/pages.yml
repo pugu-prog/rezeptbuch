@@ -31,6 +31,7 @@ jobs:
           cp index.html _site/
           cp -r rezepte _site/
           if [ -d bilder ]; then cp -r bilder _site/; fi
+          if [ -f herzer.json ]; then cp herzer.json _site/; fi
           python3 scripts/build_index.py _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

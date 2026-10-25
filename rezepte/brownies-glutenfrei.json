@@ -2,6 +2,7 @@
   "titel": "Brownies glutenfräi",
   "autor": "Louis",
   "kategorie": "Kuch & Gebäck",
+  "portionen": 20,
   "zeit_minuten": 55,
   "schwierigkeit": "einfach",
   "tags": [
@@ -55,7 +56,8 @@
   "tipps": [
     "* Entweder 250 g ofgedropte Bounen aus der Dous huelen, oder 100 g gedréchent Bounen, déi iwwer Nuecht amweechen an duerno gekacht ginn.",
     "** Entweder Medjool-Dattelen huelen, oder normal Dattelen, déi virdru ongeféier 20 Minutten a lauwarmem Waasser amweechen.",
-    "D'Variant mécht doubel sou vill Deeg wéi d'Original – d'Form an d'Backzäit dofir upassen."
+    "D'Variant mécht doubel sou vill Deeg wéi d'Original – d'Form an d'Backzäit dofir upassen.",
+    "D'Variant gëtt ongeféier 20 Stécker (geschat)."
   ],
   "bild": "https://img.chefkoch-cdn.de/rezepte/3055881458202629/bilder/888995/crop-640x427/gesunde-brownies-glutenfrei-zuckerfrei.jpg",
   "quelle": "https://www.chefkoch.de/rezepte/3055881458202629/Gesunde-Brownies-glutenfrei-zuckerfrei.html",

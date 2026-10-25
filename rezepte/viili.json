@@ -1,0 +1,32 @@
+{
+  "titel": "Viili",
+  "autor": "Louis",
+  "kategorie": "Anescht",
+  "schwierigkeit": "einfach",
+  "tags": ["Joghurt", "fermentéiert", "finnesch", "ouni Joghurtmaschinn"],
+  "beschreibung": "Viili ass en traditionelle finnesche Joghurt, deen ouni Joghurtmaschinn direkt bei Zëmmertemperatur fermentéiert. Duerch seng speziell mesophil Kulturen kritt en eng besonnesch, liicht schleimeg a fuedeg Konsistenz an e mëllen, botterege Goût.",
+  "zutaten": [
+    "1 Liter frësch Mëllech (Zëmmertemperatur, ca. 20–24 °C)",
+    "1–2 EL Viili-Starterkultur (fäerdege Viili-Joghurt vun enger fréierer Charge oder reaktivéiert Kultur a Pulverform)",
+    {
+      "gruppe": "Du brauchs",
+      "liste": [
+        "e propert Schraubglas oder eng breet, flaach Schossel",
+        "e Kichentuch, e Kaffisfilter oder den Deckel vum Glas (nëmmen locker drophuelen)"
+      ]
+    }
+  ],
+  "schritte": [
+    "Starter: 1 bis 2 EL vun der Viili-Starterkultur an dat propert Gefäiss ginn.",
+    "Mëllech dobäigéissen: de Liter Mëllech lues dobäigéissen a virsiichteg ëmréieren, esou datt sech d'Kultur gläichméisseg verdeelt.",
+    "Ofdecken: d'Gefäiss locker ofdecken. D'Kulturen brauche fir eng optimal Konsistenz (an d'Bildung vun der typescher, samteger Uewerflächeschicht) e bëssen Sauerstoff.",
+    "Fermentéieren: d'Gefäiss bei normaler Zëmmertemperatur (18–25 °C) op engem waarme Plaz ongeféier 12 bis 24 Stonnen onberéiert stoen loossen. Dat Glas an där Zäit net beweegen. Soubal d'Mass fest ginn ass a sech beim Kippen liicht vum Rand léist, ass de Joghurt fäerdeg.",
+    "Killen: de fäerdege Viili op d'mannst 2 bis 4 Stonnen an de Frigo stellen. Doduerch gëtt d'Struktur méi fest an de Goût reift no."
+  ],
+  "tipps": [
+    "Fir den nächste Viili kann een 1–2 EL vum fäerdege Joghurt als Starter fir déi nächst Charge behalen."
+  ],
+  "quelle": "https://kefirgrains.ie/how-to-make-viili-yogurt/",
+  "bild": "https://www.kefirkaufen.de/media/imagenes/yogures/de/joghurt-makro-loeffel-faden.webp",
+  "hinzugefuegt": "2026-10-25"
+}
